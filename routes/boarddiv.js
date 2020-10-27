@@ -19,8 +19,6 @@ connection.connect();
 var outdata = [];
 
 router.post("/", function (req, res) {
-  console.log("-----------------------------------------a");
-
   console.log(req.body.userdiv);
   const ss = connection.query(
     "SELECT * FROM BOARD where public = '" + req.body.userdiv + "' limit 10;",
@@ -42,10 +40,23 @@ router.post("/", function (req, res) {
       }
     }
   );
+  console.log(
+    "==============================================================="
+  );
+  console.log(
+    "====================request sql for BoardDiv====================="
+  );
   console.log(ss.sql);
-  console.log("same");
+  console.log(
+    "==============================================================="
+  );
+  console.log(
+    "=====================Response for BoardDiv======================="
+  );
   console.log(outdata);
-  console.log("-----------------------------------------b");
+  console.log(
+    "==============================================================="
+  );
   res.send(outdata);
 });
 

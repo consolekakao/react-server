@@ -1,6 +1,7 @@
 var bodyParser = require("body-parser");
 var express = require("express");
 var session = require("express-session");
+const crypto = require("crypto");
 var router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -32,15 +33,23 @@ var connection = mysql.createConnection({
   password: dbconnect.password,
   database: dbconnect.database,
 });
+
+function sha_encryption(data, key) {
+  var crypto_sha = crypto.createHmac("sha256", key);
+  var hmac_up = crypto_sha.update(data).digest("hex");
+  return hmac_up;
+}
 var result = {};
 connection.connect();
 router.post("/", (req, res) => {
+  var id = req.body.id;
+  var pw = req.body.pw;
+  var crypto_key = "askjkasnelcm";
+  console.log(pw);
+  pw = sha_encryption(pw, crypto_key);
+  console.log(pw);
   let query = connection.query(
-    'select * from USER where id="' +
-      req.body.id +
-      '" && pw="' +
-      req.body.pw +
-      '";',
+    'select * from USER where id="' + id + '" && pw="' + pw + '";',
     function (err, rows) {
       if (err) throw err;
       if (rows[0]) {

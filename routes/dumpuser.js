@@ -14,7 +14,7 @@ connection.connect();
 // addcalendar.js
 router.get("/", function (req, res) {
   var i;
-  for (i = 0; i < 300; i++) {
+  for (i = 0; i < 5; i++) {
     var dumpsrc = ["src1.png", "src2.png", "src3.png", "src4.png", "src5.png"];
     var dumpname = ["I412", "I311", "I112", "D427", "D112", "A109"];
     var dumpjoin = [

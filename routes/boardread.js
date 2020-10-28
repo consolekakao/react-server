@@ -5,6 +5,7 @@ const dbconnect = require("./dbconnect.json");
 var mysql = require("mysql");
 const cors = require("cors");
 const { query } = require("express");
+
 var connection = mysql.createConnection({
   host: dbconnect.host,
   port: dbconnect.port,
@@ -17,9 +18,9 @@ connection.connect();
 var outdata = [];
 
 router.post("/", function (req, res) {
-  console.log(req.body.userdiv);
+  console.log(req.body.idx);
   const ss = connection.query(
-    "SELECT * FROM BOARD where public = '" + req.body.userdiv + "' limit 10;",
+    "SELECT * FROM BOARD where IDX = '" + req.body.idx + "' limit 1;",
     function (err, rows) {
       try {
         if (err) throw err;
@@ -32,30 +33,14 @@ router.post("/", function (req, res) {
           boarddata.writer = encodeURI(rows[i].WRITER);
           boarddata.contents = encodeURI(rows[i].CONTENTS);
           outdata.push(boarddata);
+          console.log(boarddata);
         }
       } catch (error) {
         console.error(error);
       }
     }
   );
-  console.log(
-    "==============================================================="
-  );
-  console.log(
-    "====================request sql for BoardDiv====================="
-  );
-  console.log(ss.sql);
-  console.log(
-    "==============================================================="
-  );
-  console.log(
-    "=====================Response for BoardDiv======================="
-  );
-  console.log(outdata);
-  console.log(
-    "==============================================================="
-  );
+
   res.send(outdata);
 });
-
 module.exports = router;

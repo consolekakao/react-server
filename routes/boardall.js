@@ -17,7 +17,7 @@ connection.connect();
 var outdata = [];
 
 router.post("/", function (req, res) {
-  connection.query("SELECT * FROM BOARD where public = 1 limit 10;", function (
+  connection.query("SELECT * FROM BOARD where public = 0 limit 10;", function (
     err,
     rows
   ) {
@@ -30,6 +30,7 @@ router.post("/", function (req, res) {
         boarddata.idx = encodeURI(rows[i].IDX);
         boarddata.title = encodeURI(rows[i].TITLE);
         boarddata.writer = encodeURI(rows[i].WRITER);
+        boarddata.contents = encodeURI(rows[i].CONTENTS);
         outdata.push(boarddata);
       }
     } catch (error) {

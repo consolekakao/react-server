@@ -15,7 +15,7 @@ connnection.connect();
 
 var outdata = [];
 router.post("/", function (req, res) {
-  const CalendarData = connnection.query("select * from todo", function (
+  const CalendarData = connnection.query("select * from todo  ", function (
     err,
     rows
   ) {

@@ -17,7 +17,6 @@ connection.connect();
 var outdata = [];
 
 router.post("/", function (req, res) {
-  console.log(req.body.userdiv);
   const ss = connection.query(
     "SELECT * FROM BOARD where public = '" + req.body.userdiv + "' limit 10;",
     function (err, rows) {

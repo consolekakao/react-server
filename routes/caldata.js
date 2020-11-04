@@ -32,24 +32,6 @@ router.post("/", function (req, res) {
         caldata.color = decodeURI(rows[i].backgroundcolor);
         outdata.push(caldata);
       }
-
-      console.log(
-        "====================================================================="
-      );
-      console.log(
-        "====================request sql for CalendarData====================="
-      );
-      console.log(CalendarData.sql);
-      console.log(
-        "====================================================================="
-      );
-      console.log(
-        "=====================Response for CalendarData======================="
-      );
-      console.log(outdata);
-      console.log(
-        "====================================================================="
-      );
     } catch {
       console.log("err caldata");
     }

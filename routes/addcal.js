@@ -12,16 +12,29 @@ var connection = mysql.createConnection({
 connection.connect();
 // addcalendar.js
 router.post("/", function (req, res) {
-  console.log("실행됨-------------------");
+  console.log(req.body);
+  console.log("-------ADD TODO-------");
   connection.query(
-    "insert into todo (title,start,end,backgroundcolor) values('" +
+    "insert into todo (title,start,end,backgroundcolor,contents,id,private) values('" +
       req.body.title +
       "','" +
       req.body.date +
+      " " +
+      req.body.starttime +
+      ":00" +
       "','" +
       req.body.end +
+      " " +
+      req.body.endtime +
+      ":00" +
       "','" +
       req.body.color +
+      "','" +
+      req.body.contents +
+      "','" +
+      req.body.id +
+      "','" +
+      req.body.privated +
       "')"
   );
   res.send(true);

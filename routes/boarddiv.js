@@ -37,23 +37,7 @@ router.post("/", function (req, res) {
       }
     }
   );
-  console.log(
-    "==============================================================="
-  );
-  console.log(
-    "====================request sql for BoardDiv====================="
-  );
-  console.log(ss.sql);
-  console.log(
-    "==============================================================="
-  );
-  console.log(
-    "=====================Response for BoardDiv======================="
-  );
-  console.log(outdata);
-  console.log(
-    "==============================================================="
-  );
+
   res.send(outdata);
 });
 

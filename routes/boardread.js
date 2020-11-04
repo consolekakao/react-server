@@ -33,7 +33,6 @@ router.post("/", function (req, res) {
           boarddata.writer = encodeURI(rows[i].WRITER);
           boarddata.contents = encodeURI(rows[i].CONTENTS);
           outdata.push(boarddata);
-          console.log(boarddata);
         }
       } catch (error) {
         console.error(error);

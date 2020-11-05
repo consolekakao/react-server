@@ -37,6 +37,17 @@ router.post("/", function (req, res) {
       req.body.privated +
       "')"
   );
+
+  //sql 사용량 체크
+  const updatehowusesql = connection.query(
+    "update howusesql set count = count + 1 where api='addcalendar'",
+    function (err, rows) {
+      try {
+      } catch (error) {}
+    }
+  );
+  /////////////////////
+
   res.send(true);
 });
 module.exports = router;

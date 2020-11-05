@@ -14,7 +14,6 @@ var connection = mysql.createConnection({
   dateStrings: "date",
 });
 connection.connect();
-
 var outdata = [];
 
 router.post("/", function (req, res) {
@@ -39,7 +38,15 @@ router.post("/", function (req, res) {
       console.error(error);
     }
   });
-
+  //sql 사용량 체크
+  const updatehowusesql = connection.query(
+    "update howusesql set count = count + 1 where api='boardall'",
+    function (err, rows) {
+      try {
+      } catch (error) {}
+    }
+  );
+  /////////////////////
   res.send(outdata);
 });
 

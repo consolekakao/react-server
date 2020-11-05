@@ -2,20 +2,21 @@ var express = require("express");
 var router = express.Router();
 const cors = require("cors");
 router.use(cors());
+var fun = require("./checksql");
 const dbconnect = require("./dbconnect.json");
 var mysql = require("mysql");
-var connnection = mysql.createConnection({
+var connection = mysql.createConnection({
   host: dbconnect.host,
   port: dbconnect.port,
   user: dbconnect.user,
   password: dbconnect.password,
   database: dbconnect.database,
 });
-connnection.connect();
+connection.connect();
 
 var outdata = [];
 router.post("/", function (req, res) {
-  const CalendarDataPrivate = connnection.query(
+  const CalendarDataPrivate = connection.query(
     "select * from todo where id='" + req.body.userid + "'",
     function (err, rows) {
       try {
@@ -37,7 +38,7 @@ router.post("/", function (req, res) {
     }
   );
 
-  const CalendarDataAll = connnection.query(
+  const CalendarDataAll = connection.query(
     "select * from todo where private='0' && not id = '" +
       req.body.userid +
       "'",
@@ -60,6 +61,16 @@ router.post("/", function (req, res) {
       }
     }
   );
+
+  function calendarsql() {
+    connection.query(
+      "update howusesql set count = count + 1 where api='calendar'",
+      function (err, rows) {
+        try {
+        } catch (error) {}
+      }
+    );
+  }
 
   res.send(outdata);
 });

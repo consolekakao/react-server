@@ -69,6 +69,15 @@ router.post("/", (req, res) => {
         console.log("fail login");
         console.log("----------------------");
       }
+      //sql 사용량 체크
+      const updatehowusesql = connection.query(
+        "update howusesql set count = count + 1 where api='login'",
+        function (err, rows) {
+          try {
+          } catch (error) {}
+        }
+      );
+      /////////////////////
       res.send(result);
     }
   );

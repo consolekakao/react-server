@@ -39,7 +39,15 @@ router.post("/", function (req, res) {
       }
     }
   );
-
+  //sql 사용량 체크
+  const updatehowusesql = connection.query(
+    "update howusesql set count = count + 1 where api='boardread'",
+    function (err, rows) {
+      try {
+      } catch (error) {}
+    }
+  );
+  /////////////////////
   res.send(outdata);
 });
 module.exports = router;

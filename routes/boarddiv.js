@@ -11,6 +11,7 @@ var connection = mysql.createConnection({
   user: dbconnect.user,
   password: dbconnect.password,
   database: dbconnect.database,
+  dateStrings: "date",
 });
 connection.connect();
 
@@ -30,6 +31,7 @@ router.post("/", function (req, res) {
           boarddata.title = encodeURI(rows[i].TITLE);
           boarddata.writer = encodeURI(rows[i].WRITER);
           boarddata.contents = encodeURI(rows[i].CONTENTS);
+          boarddata.date = encodeURI(rows[i].date);
           outdata.push(boarddata);
         }
       } catch (error) {

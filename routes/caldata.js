@@ -15,27 +15,52 @@ connnection.connect();
 
 var outdata = [];
 router.post("/", function (req, res) {
-  const CalendarData = connnection.query("select * from todo  ", function (
-    err,
-    rows
-  ) {
-    try {
-      if (err) throw err;
-      var i;
-      outdata = [];
-      for (i = 0; i < rows.length; i++) {
-        var caldata = {};
-        caldata.id = encodeURI(rows[i].idx);
-        caldata.title = decodeURI(rows[i].title);
-        caldata.date = decodeURI(rows[i].start);
-        caldata.end = decodeURI(rows[i].end);
-        caldata.color = decodeURI(rows[i].backgroundcolor);
-        outdata.push(caldata);
+  const CalendarDataPrivate = connnection.query(
+    "select * from todo where id='" + req.body.userid + "'",
+    function (err, rows) {
+      try {
+        if (err) throw err;
+        var i;
+        outdata = [];
+        for (i = 0; i < rows.length; i++) {
+          var caldata = {};
+          caldata.id = encodeURI(rows[i].idx);
+          caldata.title = decodeURI(rows[i].title);
+          caldata.date = decodeURI(rows[i].start);
+          caldata.end = decodeURI(rows[i].end);
+          caldata.color = decodeURI(rows[i].backgroundcolor);
+          outdata.push(caldata);
+        }
+      } catch {
+        console.log("err caldata");
       }
-    } catch {
-      console.log("err caldata");
     }
-  });
+  );
+
+  const CalendarDataAll = connnection.query(
+    "select * from todo where private='0' && not id = '" +
+      req.body.userid +
+      "'",
+    function (err, rows) {
+      try {
+        if (err) throw err;
+        var i;
+        // outdata = [];
+        for (i = 0; i < rows.length; i++) {
+          var caldata = {};
+          caldata.id = encodeURI(rows[i].idx);
+          caldata.title = decodeURI(rows[i].title);
+          caldata.date = decodeURI(rows[i].start);
+          caldata.end = decodeURI(rows[i].end);
+          caldata.color = decodeURI(rows[i].backgroundcolor);
+          outdata.push(caldata);
+        }
+      } catch {
+        console.log("err caldata");
+      }
+    }
+  );
+
   res.send(outdata);
 });
 module.exports = router;

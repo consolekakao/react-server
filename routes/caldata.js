@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 const cors = require("cors");
 router.use(cors());
-var fun = require("./checksql");
 const dbconnect = require("./dbconnect.json");
 var mysql = require("mysql");
 var connection = mysql.createConnection({
@@ -29,6 +28,7 @@ router.post("/", function (req, res) {
           caldata.title = decodeURI(rows[i].title);
           caldata.date = decodeURI(rows[i].start);
           caldata.end = decodeURI(rows[i].end);
+          caldata.contents = decodeURI(rows[i].contents);
           caldata.color = decodeURI(rows[i].backgroundcolor);
           outdata.push(caldata);
         }

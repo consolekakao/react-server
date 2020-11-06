@@ -1,7 +1,6 @@
 {
   "name": "erpserver",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -18,5 +17,14 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consolekakao/react-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/consolekakao/react-server/issues"
+  },
+  "homepage": "https://github.com/consolekakao/react-server#readme",
+  "description": ""
 }

@@ -10,6 +10,7 @@ var connection = mysql.createConnection({
   user: dbconnect.user,
   password: dbconnect.password,
   database: dbconnect.database,
+  dateStrings: "date",
 });
 connection.connect();
 

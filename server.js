@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const axios = require("axios");
 var http = require("http").createServer(app);
 const io = require("socket.io")(http, {
   cors: {
@@ -18,7 +19,10 @@ const addcalendar = require("./routes/addcal.js");
 const login = require("./routes/login.js");
 const dump = require("./routes/dumpuser");
 const addCalendarDrag = require("./routes/addCalendarDrag");
+const whatapi = require("./routes/socketroute.js");
 const socket = require("./routes/socket.js");
+const { default: Axios } = require("axios");
+
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
@@ -36,14 +40,6 @@ app.use(function (request, response, next) {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
-});
-
-io.on("connection", (socket) => {
-  console.log("a user connect");
-
-  socket.on("hello", (socket) => {
-    console.log("123421314242134" + socket);
-  });
 });
 
 //app.use("/dump", dump);

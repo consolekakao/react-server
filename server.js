@@ -3,14 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const axios = require("axios");
 var http = require("http").createServer(app);
-const io = require("socket.io")(http, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true,
-  },
-});
+
 const cors = require("cors");
 const boardall = require("./routes/boardall.js");
 const boarddiv = require("./routes/boarddiv.js");
@@ -19,9 +12,7 @@ const addcalendar = require("./routes/addcal.js");
 const login = require("./routes/login.js");
 const dump = require("./routes/dumpuser");
 const addCalendarDrag = require("./routes/addCalendarDrag");
-const whatapi = require("./routes/socketroute.js");
 const socket = require("./routes/socket.js");
-const { default: Axios } = require("axios");
 
 app.use(cors());
 app.use(express.json());

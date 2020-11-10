@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const axios = require("axios");
 var http = require("http").createServer(app);
 
 const cors = require("cors");

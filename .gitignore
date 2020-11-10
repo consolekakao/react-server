@@ -5,6 +5,7 @@ node_modules
 /.pnp
 .pnp.js
 .dbconnect.json
+/routes/dbconnect.json
 # testing
 /coverage
 

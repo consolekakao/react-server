@@ -12,7 +12,6 @@ const addcalendar = require("./routes/addcal.js");
 const login = require("./routes/login.js");
 const dump = require("./routes/dumpuser");
 const addCalendarDrag = require("./routes/addCalendarDrag");
-const socket = require("./routes/socket.js");
 
 app.use(cors());
 app.use(express.json());

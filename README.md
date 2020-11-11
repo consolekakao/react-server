@@ -89,3 +89,12 @@
 >
 > Api요청 방식 변경
 
+## ~2020-11-11
+
+> File Update ADd.
+>
+> CSS & Layout Update
+>
+> Board 구동 방식 변경.
+>
+> Sweetalert2로 Login시 알림 추가.

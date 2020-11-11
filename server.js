@@ -11,7 +11,7 @@ const addcalendar = require("./routes/addcal.js");
 const login = require("./routes/login.js");
 const dump = require("./routes/dumpuser");
 const addCalendarDrag = require("./routes/addCalendarDrag");
-
+const ftp = require("./routes/ftp");
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
@@ -22,6 +22,7 @@ app.use("/cal", calendar);
 app.use("/addcalendar", addcalendar);
 app.use("/login", login);
 app.use("/addCalendarDrag", addCalendarDrag);
+app.use("/upload", ftp);
 app.use(function (request, response, next) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header(

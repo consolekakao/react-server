@@ -10,8 +10,13 @@
     "express": "^4.17.1",
     "express-mysql-session": "^2.1.4",
     "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
+    "multer": "^1.4.2",
+    "multer-sftp": "^1.1.1",
     "mysql": "^2.18.1",
-    "socket.io": "^3.0.0"
+    "queue": "^6.0.1",
+    "socket.io": "^3.0.0",
+    "ssh2-sftp-client": "^5.3.1"
   },
   "devDependencies": {},
   "scripts": {

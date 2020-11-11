@@ -10,7 +10,6 @@ var connection = mysql.createConnection({
   database: dbconnect.database,
 });
 connection.connect();
-// addcalendar.js
 router.post("/", function (req, res) {
   console.log(req.body);
   console.log("-------ADD TODO Drag Calendar-------");
@@ -19,16 +18,6 @@ router.post("/", function (req, res) {
     '${req.body.startdate}','${req.body.enddate}','${req.body.color}','${req.body.contents}','${req.body.id}',
     '${req.body.privated}')`
   );
-
-  //sql 사용량 체크
-  const updatehowusesql = connection.query(
-    "update howusesql set count = count + 1 where api='addcalendar'",
-    function (err, rows) {
-      try {
-      } catch (error) {}
-    }
-  );
-  /////////////////////
 
   res.send(true);
 });

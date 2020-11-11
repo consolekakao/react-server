@@ -63,16 +63,6 @@ router.post("/", function (req, res) {
     }
   );
 
-  function calendarsql() {
-    connection.query(
-      "update howusesql set count = count + 1 where api='calendar'",
-      function (err, rows) {
-        try {
-        } catch (error) {}
-      }
-    );
-  }
-
   res.send(outdata);
 });
 module.exports = router;

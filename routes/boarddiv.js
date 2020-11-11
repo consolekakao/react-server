@@ -19,7 +19,7 @@ var outdata = [];
 
 router.post("/", function (req, res) {
   const ss = connection.query(
-    "SELECT * FROM BOARD where public = '" + req.body.userdiv + "' limit 10;",
+    "SELECT * FROM BOARD where public = '" + req.body.userdiv + "' limit 20;",
     function (err, rows) {
       try {
         if (err) throw err;
@@ -31,7 +31,9 @@ router.post("/", function (req, res) {
           boarddata.title = encodeURI(rows[i].TITLE);
           boarddata.writer = encodeURI(rows[i].WRITER);
           boarddata.contents = encodeURI(rows[i].CONTENTS);
-          boarddata.date = encodeURI(rows[i].date);
+          boarddata.date = encodeURI(rows[i].date)
+            .substring(5, 18)
+            .replace("-", ".");
           outdata.push(boarddata);
         }
       } catch (error) {
@@ -40,15 +42,6 @@ router.post("/", function (req, res) {
     }
   );
 
-  //sql 사용량 체크
-  const updatehowusesql = connection.query(
-    "update howusesql set count = count + 1 where api='boarddiv'",
-    function (err, rows) {
-      try {
-      } catch (error) {}
-    }
-  );
-  /////////////////////
   res.send(outdata);
 });
 

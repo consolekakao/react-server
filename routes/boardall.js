@@ -17,7 +17,7 @@ connection.connect();
 var outdata = [];
 
 router.post("/", function (req, res) {
-  connection.query("SELECT * FROM BOARD where public = 0 limit 10;", function (
+  connection.query("SELECT * FROM BOARD where public = 0 limit 20;", function (
     err,
     rows
   ) {
@@ -31,22 +31,15 @@ router.post("/", function (req, res) {
         boarddata.title = encodeURI(rows[i].TITLE);
         boarddata.writer = encodeURI(rows[i].WRITER);
         boarddata.contents = encodeURI(rows[i].CONTENTS);
-        boarddata.date = encodeURI(rows[i].date);
+        boarddata.date = encodeURI(rows[i].date)
+          .substring(5, 18)
+          .replace("-", ".");
         outdata.push(boarddata);
       }
     } catch (error) {
       console.error(error);
     }
   });
-  //sql 사용량 체크
-  const updatehowusesql = connection.query(
-    "update howusesql set count = count + 1 where api='boardall'",
-    function (err, rows) {
-      try {
-      } catch (error) {}
-    }
-  );
-  /////////////////////
   res.send(outdata);
 });
 

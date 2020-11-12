@@ -22,52 +22,32 @@ var sftpStorage = require("multer-sftp");
 connection.connect();
 var storage = sftpStorage({
   sftp: {
-    host: "183.111.199.157",
+    host: dbconnect.host,
     port: "22",
-    username: "alpacao",
-    password: "alpaca16",
+    username: dbconnect.user,
+    password: dbconnect.password,
   },
   destination: function (req, file, cb) {
-    cb(null, "uploads/"); // /upload 부분을 다른 부분으로 바꾸면 파일의 저장 경로을 바꿀 수 있다.
+    cb(null, "/");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "_" + file.originalname);
+    var date = Date.now();
+    cb(null, date + "_" + file.originalname.replace(/ /gi, "")); //전체 공백제거
   },
 });
 var upload = multer({ storage: storage });
-router.get("/upload", (req, res) => {
-  res.render("upload");
-});
-router.get("/", function (req, res) {
-  fs.readFile("index.html", function (err, data) {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(data);
-  });
-});
 
 router.post("/", upload.single("myFile"), function (req, res) {
   data = req.file;
+  const id = req.body.userid;
+  const originalfilename = decodeURI(data.filename);
+  const serverfilename = encodeURI(data.filename);
+  const src = __dirname + "\\" + encodeURI(data.filename);
+  const public = "0";
+  console.log(
+    `id= ${id} \n originalname= ${originalfilename} \n serverfilename= ${serverfilename} \n src= ${src}`
+  );
 
-  file_destination = data.destination; // 파일이 가는 원격 저장소 경로
-  file_originalname = data.originalname; // 파일의 원래이름과 확장자명
-  upload_name = data.filename; //파일이 업로드 될때 이름
-  upload_fullpath = data.path; //파일이 업로드 되는 폴더의 경로 파일 이름과 확장자명.
-
-  console.log("---------------------------");
-  console.log("---------------------------");
-  console.log("---------------------------");
-  console.log("---------------------------");
-  console.log("이건 upload_fullpath " + "\n" + upload_fullpath);
-
-  console.log("---------------------------");
-  console.log("이건 upload_originalname " + "\n" + file_originalname);
-
-  console.log("---------------------------");
-  console.log("이건 upload_name " + "\n" + upload_name);
-
-  console.log("---------------------------");
-  console.log("이건 file_destination " + "\n" + file_destination);
-
-  res.send("upload 성공 입니다.");
+  res.write("<html><script>window.close();</script></html>");
 });
 module.exports = router;

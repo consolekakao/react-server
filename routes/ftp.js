@@ -21,20 +21,20 @@ var sftpStorage = require("multer-sftp");
 connection.connect();
 var storage = sftpStorage({
   sftp: {
-    host: dbconnect.host,
+    host: "sftp://alpacao.cafe24.com/uploads",
     port: "22",
     username: dbconnect.user,
     password: dbconnect.password,
   },
-  destination: function (req, file, cb) {
-    cb(null, "/");
-  },
+  destination: "/",
   filename: function (req, file, cb) {
     var date = Date.now();
     cb(null, date + "_" + file.originalname.replace(/ /gi, "")); //전체 공백제거
   },
 });
-var upload = multer({ storage: storage });
+var upload = multer({
+  storage: storage,
+});
 
 router.post("/", upload.single("myFile"), function (req, res) {
   data = req.file;

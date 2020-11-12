@@ -5,7 +5,6 @@ router.use(cors());
 const dbconnect = require("./dbconnect.json");
 var mysql = require("mysql");
 var data = new Array();
-///////////////////////////////
 var fs = require("fs");
 var express = require("express");
 var multer = require("multer");

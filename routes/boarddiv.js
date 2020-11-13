@@ -1,10 +1,7 @@
-const { urlencoded } = require("body-parser");
 var express = require("express");
 var router = express.Router();
 const dbconnect = require("./dbconnect.json");
 var mysql = require("mysql");
-const cors = require("cors");
-const { query } = require("express");
 var connection = mysql.createConnection({
   host: dbconnect.host,
   port: dbconnect.port,

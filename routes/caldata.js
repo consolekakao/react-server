@@ -16,7 +16,7 @@ connection.connect();
 
 var outdata = [];
 router.post("/", function (req, res) {
-  const CalendarDataPrivate = connection.query(
+  connection.query(
     "select * from todo where id='" + req.body.userid + "'",
     function (err, rows) {
       try {
@@ -39,7 +39,7 @@ router.post("/", function (req, res) {
     }
   );
 
-  const CalendarDataAll = connection.query(
+  connection.query(
     "select * from todo where private='0' && not id = '" +
       req.body.userid +
       "'",

@@ -21,12 +21,14 @@ var sftpStorage = require("multer-sftp");
 connection.connect();
 var storage = sftpStorage({
   sftp: {
-    host: "sftp://alpacao.cafe24.com/uploads",
+    host: "http://alpacao.cafe24.com",
     port: "22",
     username: dbconnect.user,
     password: dbconnect.password,
   },
-  destination: "/",
+  destination: function (res, file, cb) {
+    cb(null, "/uploads");
+  },
   filename: function (req, file, cb) {
     var date = Date.now();
     cb(null, date + "_" + file.originalname.replace(/ /gi, "")); //전체 공백제거

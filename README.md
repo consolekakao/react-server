@@ -25,15 +25,15 @@
 > > > 부서별로 보기, 나만보기가 적용됩니다. 다양한 색상으로 적용 할 수 있으며 일정은 일자 별, 시간대 별로 디테일하게
 > > >
 > > > 작성이 가능합니다.
-> > > ![img](http://alpacao.cafe24.com/proimg1.PNG)
 > >
 > > > EN: Schedules can be shared with people of the same level, and personal schedules can be registered by date and time.
+> > > ![img](http://alpacao.cafe24.com/proimg1.PNG)
 > >
 > > Board :
 > >
 > > > KO: 게시판은 전체게시판 및 부서 별 게시판으로 나누어 사용이 가능하며 부서 게시판은 해당되는 부서의 게시글만 표시됩니다.
-> > > ![img](http://alpacao.cafe24.com/proimg2.PNG)
 > >
+> > > ![img](http://alpacao.cafe24.com/proimg2.PNG)
 > > > EN: Posts can be shared among people of the same level, and bulletin boards can be used for each department.
 > >
 > > Chat :

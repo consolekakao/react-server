@@ -100,6 +100,8 @@
 > Board 구동 방식 변경.
 >
 > Sweetalert2로 Login시 알림 추가.
+>
+> > ![img](http://alpacao.cafe24.com/proimg3.PNG)
 
 ## ~2020-11-13
 

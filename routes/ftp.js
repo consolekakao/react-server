@@ -21,13 +21,13 @@ var sftpStorage = require("multer-sftp");
 connection.connect();
 var storage = sftpStorage({
   sftp: {
-    host: "http://alpacao.cafe24.com",
+    host: "alpacao.cafe24.com",
     port: "22",
     username: dbconnect.user,
     password: dbconnect.password,
   },
-  destination: function (res, file, cb) {
-    cb(null, "/uploads");
+  destination: function (req, file, cb) {
+    cb(null, "uploads\\");
   },
   filename: function (req, file, cb) {
     var date = Date.now();
@@ -41,6 +41,8 @@ var upload = multer({
 router.post("/", upload.single("myFile"), function (req, res) {
   data = req.file;
   const id = req.body.userid;
+  const path = storage.destination;
+  console.log(path);
   const originalfilename = decodeURI(data.filename);
   const serverfilename = encodeURI(data.filename);
   const src = __dirname + "\\" + encodeURI(data.filename);

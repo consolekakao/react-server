@@ -48,6 +48,7 @@ router.post("/", (req, res) => {
   console.log(pw);
   pw = sha_encryption(pw, crypto_key);
   console.log(pw);
+  console.log(req.ip);
   let query = connection.query(
     'select * from USER where id="' + id + '" && pw="' + pw + '";',
     function (err, rows) {
@@ -70,12 +71,8 @@ router.post("/", (req, res) => {
         console.log("----------------------");
       }
       //sql 사용량 체크
-      const updatehowusesql = connection.query(
-        "update howusesql set count = count + 1 where api='login'",
-        function (err, rows) {
-          try {
-          } catch (error) {}
-        }
+      connection.query(
+        `insert into USERLOGINLOG (id,time,loginip) values("${id}",now(),"${req.ip}")`
       );
       /////////////////////
       res.send(result);

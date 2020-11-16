@@ -4,7 +4,7 @@
 > >
 > > Front-End : [React](https://github.com/consolekakao/react-client)
 > >
-> > Back-End : [Node.js](https://github.com/consolekakao/react-server)
+> > Back-End : [Node.js 12.16.3](https://github.com/consolekakao/react-server)
 > >
 > > DataBase : MariaDB 10.1 v
 >
@@ -18,7 +18,7 @@
 >
 > > ### Main Function
 > >
-> > Share Schedule :
+> > 📆 Share Schedule :
 > >
 > > > KO: 같은 등급의 사람들 끼리 일정을 공유 할 수 있고 개별적으로 일정을 등록할 수 있으며 전체보기,
 > > >
@@ -29,18 +29,18 @@
 > > > EN: Schedules can be shared with people of the same level, and personal schedules can be registered by date and time.
 > > > ![img](http://alpacao.cafe24.com/proimg1.PNG)
 > >
-> > Board :
+> > 📋 Board :
 > >
 > > > KO: 게시판은 전체게시판 및 부서 별 게시판으로 나누어 사용이 가능하며 부서 게시판은 해당되는 부서의 게시글만 표시됩니다.
 > >
 > > > ![img](http://alpacao.cafe24.com/proimg2.PNG)
 > > > EN: Posts can be shared among people of the same level, and bulletin boards can be used for each department.
 > >
-> > Chat :
+> > 📞 Chat :
 > >
 > > > Planning.
 > >
-> > FTP:
+> > 💾 FTP:
 > >
 > > > KO: 전체 및 부서별, 개인 FTP를 제공합니다. (Planning.)
 
@@ -58,7 +58,7 @@
 >
 > 날카로운 피드백은 언제나 환영합니다.
 
-## 🛠UPDATE LOG
+## 🛠 UPDATE LOG
 
 ## ~2020-11-06
 
@@ -105,4 +105,9 @@
 
 ## ~2020-11-13
 
-> Multer-sftp를 이용한 ftp업로드
+> > Multer-sftp를 이용한 ftp업로드
+> > 회원가입 기능 구현
+
+## ~2020-11-16
+
+> > 로그인시 DB에 LOG추가. (IPv6)

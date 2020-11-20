@@ -24,14 +24,6 @@ app.use("/login", login);
 app.use("/addCalendarDrag", addCalendarDrag);
 app.use("/signup", signup);
 app.use("/upload", ftp);
-app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 //app.use("/dump", dump);
 const port = 3002;
